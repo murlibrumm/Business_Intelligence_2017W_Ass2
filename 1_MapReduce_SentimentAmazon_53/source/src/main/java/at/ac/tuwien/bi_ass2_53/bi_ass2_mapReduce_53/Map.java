@@ -92,7 +92,7 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 		String line = lineText.toString();
 		JSONObject obj = new JSONObject(line);
 		String reviewText = obj.getString("reviewText");
-		//String asin = obj.getString("asin");
+		String asin = obj.getString("asin");
 		
 		// If caseSensitive is false, convert everything to lower case.
 		if (!caseSensitive) {
@@ -100,24 +100,20 @@ public class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 		}
 
 		// Store each the current word in the queue for processing.
-		Text currentWord = new Text();
 		for (String word : WORD_BOUNDARY.split(reviewText))
 		{
 			if (word.isEmpty()) {
 				continue;
 			}
-			// Count instances of each (non-skipped) word.
-			currentWord = new Text(word);
-			context.write(currentWord,one);
 
 			// Filter and count "good" words.
 			if (goodWords.contains(word)) {
-				context.getCounter("positive", asin).increment(1);
+				context.write(new Text("P" + asin), one);
 			}
 
 			// Filter and count "bad" words.
 			if (badWords.contains(word)) {
-				context.getCounter("negative", asin).increment(1);
+				context.write(new Text("N" + asin), one);
 			}
 		}
 	}

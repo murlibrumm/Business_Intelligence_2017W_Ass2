@@ -1,24 +1,49 @@
 CREATE TABLE movies
 (movieId INT, title STRING, genres STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+    "separatorChar" = ",",
+    "quoteChar" = '"',
+    "escapeChar" = "\\"
+)
 STORED AS TEXTFILE;
 
 CREATE TABLE tags
 (userId INT, movieId INT, tag STRING, `timestamp` TIMESTAMP)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+    "separatorChar" = ",",
+    "quoteChar" = '"',
+    "escapeChar" = "\\"
+)
 STORED AS TEXTFILE;
 
 CREATE TABLE ratings
-(userId INT, movieId INT, rating NUMERIC(10, 4), `timestamp` TIMESTAMP)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+(userId INT, movieId INT, rating DOUBLE, `timestamp` TIMESTAMP)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+    "separatorChar" = ",",
+    "quoteChar" = '"',
+    "escapeChar" = "\\"
+)
 STORED AS TEXTFILE;
 
 CREATE TABLE genome_scores
 (movieId INT, tagId INT, relavance DOUBLE)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+    "separatorChar" = ",",
+    "quoteChar" = '"',
+    "escapeChar" = "\\"
+)
 STORED AS TEXTFILE;
 
 CREATE TABLE genome_tags
 (tagId INT, tag STRING)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+    "separatorChar" = ",",
+    "quoteChar" = '"',
+    "escapeChar" = "\\"
+)
 STORED AS TEXTFILE;

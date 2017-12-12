@@ -1,1 +1,1 @@
-SELECT * FROM movies WHERE genres LIKE '%Horror%';
+SELECT COUNT(*) FROM movies WHERE genres LIKE '%Horror%';

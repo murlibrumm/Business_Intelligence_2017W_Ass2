@@ -1,4 +1,4 @@
-SELECT *
+SELECT t.tag, s.relevance
 FROM genome_scores s
 JOIN genome_tags t
     ON t.tagId = s.tagId

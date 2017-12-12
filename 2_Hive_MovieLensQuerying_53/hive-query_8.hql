@@ -9,4 +9,4 @@ FROM
     HAVING COUNT(*) > 10
     SORT BY avg_rating DESC
 ) as tmp
-LIMIT 10
+LIMIT 10;

@@ -6,4 +6,4 @@ WHERE r.`timestamp` >= '2010-01-01'
     AND r.`timestamp` <= '2010-12-31'
 GROUP BY m.title
 SORT BY var DESC
-LIMIT 10
+LIMIT 10;

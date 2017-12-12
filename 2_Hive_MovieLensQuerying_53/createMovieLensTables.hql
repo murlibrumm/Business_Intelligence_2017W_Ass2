@@ -29,7 +29,7 @@ WITH SERDEPROPERTIES (
 STORED AS TEXTFILE;
 
 CREATE TABLE genome_scores
-(movieId INT, tagId INT, relavance DOUBLE)
+(movieId INT, tagId INT, relevance DOUBLE)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
 WITH SERDEPROPERTIES (
     "separatorChar" = ",",

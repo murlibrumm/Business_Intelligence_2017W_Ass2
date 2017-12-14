@@ -1,3 +1,5 @@
+USE movieLens;
+
 LOAD DATA INPATH '/movieLens/movies.csv' OVERWRITE INTO TABLE movies;
 
 LOAD DATA INPATH '/movieLens/tags.csv' OVERWRITE INTO TABLE tags;

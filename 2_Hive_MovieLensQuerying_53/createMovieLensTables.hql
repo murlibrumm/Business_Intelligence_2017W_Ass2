@@ -1,3 +1,5 @@
+USE movieLens;
+
 CREATE TABLE movies
 (movieId INT, title STRING, genres STRING)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
